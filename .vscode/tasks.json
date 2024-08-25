@@ -1,0 +1,20 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build LaTeX",
+            "type": "shell",
+            "command": "latexmk",
+            "args": [
+                "-pdf",
+                "-output-directory=/Users/anguskesbury/Library/CloudStorage/OneDrive-OmahaPublicSchools/Extended_Essay/EE_Draft_1",
+                "/Users/anguskesbury/Library/CloudStorage/OneDrive-OmahaPublicSchools/Extended_Essay/EE_Draft_1/main.tex"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
