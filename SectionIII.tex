@@ -1,0 +1,105 @@
+\documentclass[.../main.tex]{subfiles}
+\graphicspath{{\subfix{.../Figures/}}}
+\begin{document}
+
+In the previous section, the idea of a differential form, an object formed from the different combinations of the differentials of the basis vectors, was introduced as a classification method for multivariate integrands. In this section, this will be built upon, and the algebraic basis for manipulating these differential forms shall be formalized, and by doing so we will lay the groundwork for the generalization of the integral. Note that this section is by far the most algebraically rigorous of this paper, and that many new and interesting topics will be introduced in a relatively short span which will not yield to a detailed investigation of each, as they are not central to the question posed by this paper.
+
+\subsection{Properties of forms} \label{subsection: 3.1}
+The differential forms introduced previously are in fact members of an entire family of algebras which are built up around a vector space $V$, known as exterior algebras. These algebras are defined by a product, termed the exterior or wedge product, and a space whose basis vectors are the exterior products of the space $V$. Let $\mathbf{e_i}$ be the basis vectors of the three-dimensional space $V$, and let $\Lambda^k(V)$ denote the $k$th exterior power of $V$. The basis vectors of $\Lambda^k(V)$ are the possible combinations of the basis vectors of $V$ under the exterior product, as such the dimension of $\Lambda^k(V)$ is given by ${3}\choose{k}$ or in general for any dim$(V) = n$ by ${n}\choose{p}$.
+
+Equally as essential to the definition of the exterior algebra is the aforementioned exterior product, which shall now be developed. The intuition is thus: consider two vectors $a$ and $b$ of arbitrary dimension $p$, both of which are centered at the origin. There then exists a plane with side lengths $|a|$ and $|b|$, and this plane must be able to be described by some object $\omega(a, b)$ which depends solely on inputs $a$ and $b$. This object must also preserve the orientation of the plane, such that $\omega(b, a) = -\omega(a, b)$, and must be linear in both $a$ and $b$, such that $\omega(c_1a_1 + c_2a_2, b) = c_1\omega(a_1, b) +  c_2\omega(a_2, b)$ and $\omega(a, c_1b_1 + c_2b_2) = c_1\omega(a, b_1) +  c_2\omega(a, b_2)$\footnotemark. The object formed by $\omega(a, b)$ shall also clearly reside not in $V$, but in $\Lambda^2V$, and as such, the bilinear form $\omega$ is called the exterior product of $V$.
+
+It is now that a brief note on terminology is to be made. The objects which reside in $\Lambda^k(V)$ are called $k$\textit{-forms}, and they take the general form of 
+\begin{equation}
+	w = \sum\limits^{k} f_i (x_1, \dots, x_k)(x_1 \wedge \dots \wedge x_k).
+	\label{eqn: 3.1}
+\end{equation}
+Further, the part of the above summand consisting of the exterior product of $k$ basis vectors is referred to as a $k$\textit{-blade}. In general, differential forms, which are simply the forms created from blades consisting of the differentials of the basis vectors, behave almost identically to their non-differential counterparts with regard to the properties given above. As such, the purely algebraic manipulation of differential forms is much akin to that of standard forms.
+
+% Footnotes
+\footnotetext{Lovelock and Rund 133. \cite{lovelockExteriorWedge1989}}
+
+\subsection{Relations between forms} \label{subsection: 3.2}
+Above, the properties of individual forms were examined, including their associativity and commutativity laws. Now an investigation of the properties of the interactions of forms is in order, as this is also essential to understanding how integrands should behave when the integral is generalized. Consider the 1-forms $\omega$ and $\pi$, whose components are given by
+\[
+	\omega = A^i dx^i
+\]
+and 
+\[
+	\pi = B^i dx^i.
+\]
+Then the natural sum of these terms is defined
+\begin{equation}
+	\omega + \pi = (A^i + B^i) dx^i,
+	\label{eqn: 3.2}	
+\end{equation}
+or for the general case of two $p$-forms with components $\pi = A^{i_1, \dots,i_p} dx^{i_1} \wedge \dots \wedge dx^{i_p}$ and $\omega = B^{i_1, \dots, i_p} dx^{i_1} \wedge \dots \wedge dx^{i_p}$, 
+\begin{equation}
+	\omega + \pi = (A^{i_1, \dots, i_p} dx^{i_1} +  B^{i_1, \dots,i_p} dx^{i_1}) dx^{i_1} \wedge \dots \wedge dx^{i_p}.
+	\label{eqn: 3.3}
+\end{equation}
+
+While the sum of forms is directly evident in their statements, the wedge of two or more forms, especially of different degree, requires further investigation. Consider the wedge product of two 1-forms $\pi$ and $\omega$ whose components are given by $\pi = A_{i} dx^{i}$ and $\omega = B_{j} dx^{j}$, which is defined to be
+\begin{equation}
+	\pi \wedge \omega = A_iB_j dx^i \wedge dx^j,
+ \label{eqn: 3.4}		
+\end{equation}
+however by the anticommutivity of forms, 
+\begin{equation}
+	\pi \wedge \omega = - \omega \wedge \pi
+	\label{eqn: 3.5}	
+\end{equation}
+and as such 
+\begin{equation}
+	A_iB_j dx^i \wedge dx^j = -A_jB_i dx^j \wedge dx^j
+	\label{eqn: 3.6}	
+\end{equation}
+\begin{equation}
+	A_iB_j dx^i \wedge dx^j - A_jB_i dx^j \wedge dx^i = 2 A_iB_j dx^i \wedge dx^j
+	\label{eqn: 3.7}	
+\end{equation}
+resulting in 
+\begin{equation}
+	\frac{1}{2} (A_iB_j dx^i \wedge dx^j - A_jB_i dx^j \wedge dx^i) = \frac{1}{2} (A_iB_j - A_jB_i) dx^i \wedge dx^j.
+	\label{eqn: 3.8}	
+\end{equation}
+
+A very similar method may be applied to reach the general formula for a product of a $p$- and a $q$- form, however this is beyond the scope of this investigation. As is shown in Lovelock and Rund (135)\footnotemark, for a $p$-form given by $\omega = A_{i_1, \dots, i_p} dx^{i_1} \wedge {\dots} \wedge dx^{i_p}$ and a $q$-form given by $\pi = B_{j_1, \dots, j_q} dx^{j_1} \wedge \dots \wedge dx^{j_q}$, the wedge product $\omega \wedge \pi$ is given by 
+\begin{equation}
+	\omega \wedge \pi = A_{i_1, \dots, i_p} B_{j_1, \dots, j_q} dx^{i_1} \wedge {\dots} \wedge dx^{i_p} \wedge dx^{j_1} \wedge \dots \wedge dx^{j_q} = (-1)^{pq}\pi \wedge \omega.
+	\label{eqn: 3.9}	
+\end{equation}
+Thus, the relations between forms have been established. From \ref{eqn: 3.4} and \ref{eqn: 3.9}, all interactions of forms may be derived.
+
+% Footnotes
+\footnotetext{\raggedright Lovelock and Rund 135 \cite{lovelockExteriorWedge1989}}
+
+\subsection{The exterior derivative} \label{subsection: 3.3}
+Before moving on to the generalization of the integral, an important concept from the exterior calculus must be introduced, as it shall prove to be indispenseblable in terms of integrating forms. This is, of course, the exterior derivative of a form, which plays very nicely with the concepts introduced thus far in the section. The intuition under which this is developed is as such: consider the \textit{k}-form $\pi$ on an open subset $V \subset \R{l}$, which may be written generally as 
+\begin{equation}
+	\pi = \sum\limits_{i, j} a_{i_j} dx^{i_j} = \sum\limits_{I} a_I dx^I.
+	\label{eq: 3.10}
+\end{equation}
+
+Denote by $d\pi$ the exterior derivative of $\pi$. Because a change of basis into $a_I$ is given by the change of basis formula
+\begin{equation}
+	da_I = \ppx{a_I}{x^j}dx^j,
+	\label{eq: 3.11}
+\end{equation}
+we define the exterior derivative of a differential form to be
+\begin{equation}
+	d\pi = \ppx{a_I}{x^j}dx^j \wedge dx^I.
+	\label{eq: 3.12}
+\end{equation}
+For instance, consider the 3-form 
+\begin{equation}
+	\omega  = \sum\limits_{i < j < k} f_{ijk} dx^i \wedge dx^j \wedge dx^k;
+	\label{eq: 3.13}
+\end{equation}
+then
+\begin{equation}
+	d\omega = \ppx{f}{x^p} dx^p \wedge dx^i \wedge dx^j \wedge dx^k + \ppx{f}{x^q} dx^q \wedge dx^i \wedge dx^j \wedge dx^k + \ppx{f}{dx^r} dx^r \wedge dx^i \wedge dx^j \wedge dx^k 
+	\label{eq: 3.14}
+\end{equation}
+
+\end{document}

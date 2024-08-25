@@ -1,0 +1,184 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\makeatletter
+
+% TEXT STYLING
+%---------------------------------------------------------------------------------------------------------%
+\usepackage[T1]{fontenc}     % We are using pdfLaTeX,
+\usepackage[utf8]{inputenc}  % hence this preparation
+\usepackage{csquotes}
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\newcommand{\subtitle}[1]{\\ 
+    \begin{large}
+        \textbf{#1}
+    \end{large}   
+}
+\usepackage{dirtytalk}
+\usepackage{ragged2e}
+\usepackage{setspace}
+\usepackage{relsize}
+\usepackage{indentfirst}
+\doublespacing
+\usepackage[toc,page]{appendix}
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+%---------------------------------------------------------------------------------------------------------%
+
+%% FIGURES
+%---------------------------------------------------------------------------------------------------------%
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta} 
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes}
+%---------------------------------------------------------------------------------------------------------%
+
+%% LINKS
+%---------------------------------------------------------------------------------------------------------%
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	pdftitle={Extended Essay},
+	urlcolor=blue,
+	breaklinks=true,
+	citecolor=blue,
+	linktocpage=true
+}
+%---------------------------------------------------------------------------------------------------------%
+
+%% BIBLIOGRAPHY SETTINGS
+%---------------------------------------------------------------------------------------------------------%
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=nty
+]{biblatex}
+\addbibresource{Extended_Essay.bib}
+%---------------------------------------------------------------------------------------------------------%
+
+%% TOC SETTINGS
+%---------------------------------------------------------------------------------------------------------%
+\usepackage{titlesec}
+\addto\captionsenglish{\renewcommand*\contentsname{Contents}}
+\usepackage{tocbibind}
+%---------------------------------------------------------------------------------------------------------%
+
+%% PAGE GEOMETRY
+%---------------------------------------------------------------------------------------------------------%
+\usepackage[{includehead,
+nomarginpar, textwidth=15cm,
+right=1in,left=1in,
+headheight=10pt,
+footnotesep=30pt,
+bottom=1in, top=1in}
+]{geometry}
+\geometry{a4paper}
+\renewcommand{\footruleskip}{20pt}
+%---------------------------------------------------------------------------------------------------------%
+
+%% COUNTERS
+%---------------------------------------------------------------------------------------------------------%
+\setcounter{tocdepth}{1} % Show sections
+\setcounter{tocdepth}{2} % + subsections
+\setcounter{tocdepth}{3} % + subsubsections
+\setcounter{tocdepth}{4} % + paragraphs
+\setcounter{tocdepth}{5} % + subparagraphs
+\numberwithin{equation}{section} % equation numbering 
+%---------------------------------------------------------------------------------------------------------%
+
+\usepackage{subfiles}
+
+\title{Title \subtitle{Mathematics Extended Essay}}
+\author{Session: May 2025 \\ Candidate Name: Angus Keesbury \\ Candidate Session Number: 006312-0028}
+\date{Word Count: }
+
+\begin{document}
+
+%% CUSTOM TYPESETTING 
+%---------------------------------------------------------------------------------------------------------%
+\newcommand{\mathhuge}[1]{\mathlarger{\mathlarger{#1}}}
+\newcommand{\mathHuge}[1]{\mathhuge{\mathlarger{#1}}}
+\newcommand{\R}[1]{\mathbb{R}^{#1}}
+\newcommand{\Co}[1]{\cos \left( #1 \right)}
+\newcommand{\Si}[1]{\sin \left( #1 \right)}
+\newcommand{\ddx}[2]{\frac{d #1}{d #2}}
+\newcommand{\ppx}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pars}[1]{\left( #1 \right)}
+%---------------------------------------------------------------------------------------------------------%
+\clearpage\maketitle
+\thispagestyle{empty}
+\newpage
+
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+\renewcommand{\thesection}{\arabic{section}}
+
+%% HEADERS / FOOTERS
+%---------------------------------------------------------------------------------------------------------%
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{Keesbury \thepage}
+
+%% INTRODUCTION 
+%---------------------------------------------------------------------------------------------------------%
+\section{Introduction}
+	\subfile{Sections/SectionI.tex}
+
+
+%% BODY
+%---------------------------------------------------------------------------------------------------------%
+\section{The Integrals of Multivariate Calculus}
+    \subfile{Sections/SectionII}
+    
+\section{The Algebra of Differential Forms}
+    \subfile{Sections/SectionIII}
+
+\section{Generalizing The Integral}
+    \subfile{Sections/SectionIV.tex}
+
+%% ENDING
+%---------------------------------------------------------------------------------------------------------%
+\section{Conclusion} 
+    \subfile{Sections/SectionV}
+
+\printbibliography[title={Works Referenced}]
+\addcontentsline{toc}{section}{Works Referenced}
+
+%% APPENDICES
+%---------------------------------------------------------------------------------------------------------%
+\appendix
+    \setcounter{section}{0}
+    \renewcommand{\thesection}{\Alph{section}.}
+    \renewcommand{\thesubsection}{\alph{section}(\roman{subsection})}
+    
+    \section{A} \label{Appendix A}
+    	\subfile{Appendices/AppendixA.tex}
+        
+    \section{B} \label{Appendix B}
+    	\subfile{Appendices/AppendixB.tex}
+%---------------------------------------------------------------------------------------------------------%
+
+\end{document}
